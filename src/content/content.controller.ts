@@ -22,8 +22,8 @@ export class ContentController {
   }
 
   @Get(':id')
-  async getContent(@Param('id') id: string): Promise<Content> {
-    return await this.service.findOne(Number(id));
+  async getContent(@Param('id') id: number): Promise<Content> {
+    return await this.service.findOne(id);
   }
   @Post()
   async addContent(@Body() content?: CreateContentDTO): Promise<InsertResult> {
