@@ -36,7 +36,8 @@ export class ContentService {
   };
 
   update = async (id, contentDto: UpdateContentDTO) => {
-    return await this.contentRepository.update({ id }, { ...contentDto });
+    await this.contentRepository.update({ id }, { ...contentDto });
+    return await this.contentRepository.findOneOrFail(id);
   };
 
   private deleteContent = async (id: number) => {
