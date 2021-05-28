@@ -59,6 +59,11 @@ $curl http://localhost:3000/content/:id -X GET
 $curl http://localhost:3000/content -X POST -d "parentId=1&title=title&body=body"
 ```
 
+### 更新
+```bash
+$curl http://localhost:3000/content/:id -X PUT -d "title=updateTitle&body=updateBody"
+```
+
 #### 削除
 ```bash
 $curl http://localhost:3000/content/:id -X DELETE

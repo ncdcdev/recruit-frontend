@@ -1,6 +1,14 @@
-import { Controller, Get, Post, Delete, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Body,
+  Param,
+  Put,
+} from '@nestjs/common';
 import { ContentService } from './content.service';
-import { CreateContentDTO } from './content.dto';
+import { CreateContentDTO, UpdateContentDTO } from './content.dto';
 import { Content } from '../entities/content.entity';
 
 @Controller('content')
@@ -19,6 +27,13 @@ export class ContentController {
   @Post()
   async addContent(@Body() content: CreateContentDTO) {
     return await this.service.create(content);
+  }
+  @Put(':id')
+  async updateContent(
+    @Param('id') id: number,
+    @Body() content: UpdateContentDTO,
+  ) {
+    return await this.service.update(id, content);
   }
   @Delete(':id')
   async deleteContent(@Param('id') id: number) {

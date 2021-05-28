@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Content } from '../entities/content.entity';
 import { ContentTree } from '../entities/content-tree.entity';
-import { CreateContentDTO } from './content.dto';
+import { CreateContentDTO, UpdateContentDTO } from './content.dto';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -22,8 +22,6 @@ export class ContentService {
 
     const parentContent = await this.contentRepository.findOneOrFail(parentId);
 
-    console.log(parentContent);
-
     const order = maxOrder.length === 0 ? 1 : maxOrder[0].order + 1;
     const createContent = this.contentRepository.create({
       title: title ?? '',
@@ -35,6 +33,10 @@ export class ContentService {
     this.contentTreeRepository.insert({ parentContent, chiledContent });
 
     return createContent;
+  };
+
+  update = async (id, contentDto: UpdateContentDTO) => {
+    return await this.contentRepository.update({ id }, { ...contentDto });
   };
 
   private deleteContent = async (id: number) => {
