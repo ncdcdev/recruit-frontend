@@ -35,12 +35,9 @@ $ yarn test:e2e
 $ yarn test:cov
 ```
 
-## migration
+## createmigrations & migration
 ```bash
-# src/entitiesに従い、migrationファイル作成
-$ yarn createmigrations
-# migrate実行
-$ yarn migrate
+$ yarn setup
 ```
 
 
@@ -49,17 +46,29 @@ $ yarn migrate
 
 #### 一覧取得（廃止予定）
 ```bash
-$curl http://localhost:3000/content -X GET -d
+$curl http://localhost:3000/content -X GET
 ```
 
 #### 取得
 ```bash
-$curl http://localhost:3000/content/:id -X GET -d
+$curl http://localhost:3000/content/:id -X GET
 ```
 
 #### 新規作成
 ```bash
-$curl http://localhost:3000/content -X POST -d "title=title&body=body"
+$curl http://localhost:3000/content -X POST -d "parentId=1&title=title&body=body"
+```
+
+#### 削除
+```bash
+$curl http://localhost:3000/content/:id -X DELETE
+```
+
+
+### Content-Tree
+#### 取得
+```bash
+$curl http://localhost:3000/content-tree -X GET
 ```
 
 ## License

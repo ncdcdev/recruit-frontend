@@ -11,6 +11,17 @@ export class ContentTreeService {
   ) {}
 
   find = async () => {
-    return await this.contentTreeRepository.find();
+    const contentTreese = await this.contentTreeRepository.find({
+      relations: ['parentContent', 'chiledContent'],
+    });
+    return contentTreese.map((contentTree) => {
+      return {
+        id: contentTree.id,
+        childTitle: contentTree.chiledContent?.title,
+        childId: contentTree.chiledContent?.id,
+        parentTitle: contentTree.parentContent?.title,
+        parentId: contentTree.parentContent?.id,
+      };
+    });
   };
 }

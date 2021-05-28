@@ -1,16 +1,7 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Put,
-  Delete,
-  Body,
-  Param,
-} from '@nestjs/common';
+import { Controller, Get, Post, Delete, Body, Param } from '@nestjs/common';
 import { ContentService } from './content.service';
 import { CreateContentDTO } from './content.dto';
 import { Content } from '../entities/content.entity';
-import { InsertResult } from 'typeorm';
 
 @Controller('content')
 export class ContentController {
@@ -26,7 +17,11 @@ export class ContentController {
     return await this.service.findOne(id);
   }
   @Post()
-  async addContent(@Body() content?: CreateContentDTO): Promise<InsertResult> {
+  async addContent(@Body() content: CreateContentDTO) {
     return await this.service.create(content);
+  }
+  @Delete(':id')
+  async deleteContent(@Param('id') id: number) {
+    return await this.service.delete(id);
   }
 }

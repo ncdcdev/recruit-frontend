@@ -1,10 +1,10 @@
 import {
   Entity,
-  Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToOne,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Content } from './content.entity';
 
@@ -13,14 +13,13 @@ export class ContentTree {
   @PrimaryGeneratedColumn()
   readonly id: number;
 
-  @OneToOne(() => Content)
+  @ManyToOne(() => Content, { primary: false, onDelete: 'CASCADE' })
+  @JoinColumn()
   parentContent: Content;
 
-  @OneToOne(() => Content)
+  @ManyToOne(() => Content, { primary: false, onDelete: 'CASCADE' })
+  @JoinColumn()
   chiledContent: Content;
-
-  @Column()
-  order: number;
 
   @CreateDateColumn()
   readonly createdAt?: Date;

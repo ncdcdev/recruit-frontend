@@ -2,14 +2,17 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ContentService } from './content.service';
 import { Repository } from 'typeorm';
 import { Content } from '../entities/content.entity';
+import { ContentTree } from '../entities/content-tree.entity';
 
 describe('ContentService', () => {
-  let repository: Repository<Content>;
+  let contentRepo: Repository<Content>;
+  let contentTreeRepo: Repository<ContentTree>;
   let service: ContentService;
 
   beforeEach(async () => {
-    repository = new Repository<Content>();
-    service = new ContentService(repository);
+    contentRepo = new Repository<Content>();
+    contentTreeRepo = new Repository<ContentTree>();
+    service = new ContentService(contentRepo, contentTreeRepo);
   });
 
   it('should be defined', () => {
@@ -17,7 +20,7 @@ describe('ContentService', () => {
   });
   it('find', async () => {
     const result: Content[] = [];
-    jest.spyOn(repository, 'find').mockResolvedValue(result);
+    jest.spyOn(contentRepo, 'find').mockResolvedValue(result);
     expect(await service.find()).toBe(result);
   });
 });
