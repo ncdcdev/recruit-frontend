@@ -11,10 +11,10 @@ export class Content {
   @PrimaryGeneratedColumn()
   readonly id: number;
 
-  @Column()
+  @Column('varchar', { length: 100, nullable: true })
   title: string;
 
-  @Column()
+  @Column('varchar', { length: 2000, nullable: true })
   body: string;
 
   @Column()
