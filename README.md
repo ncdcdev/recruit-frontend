@@ -7,6 +7,8 @@ NCDCフロント課題[Markdown Editor]のバックエンドリポジトリ
 $ yarn install
 # migrate実行
 $ yarn migrate
+# 実行
+$ yarn start
 ```
 
 ## Running the app
@@ -20,24 +22,6 @@ $ yarn start:dev
 
 # production mode
 $ yarn start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ yarn test
-
-# e2e tests
-$ yarn test:e2e
-
-# test coverage
-$ yarn test:cov
-```
-
-## createmigrations & migration
-```bash
-$ yarn setup
 ```
 
 
@@ -59,7 +43,7 @@ $curl http://localhost:3000/content/:id -X GET
 $curl http://localhost:3000/content -X POST -d "parentId=1&title=title&body=body"
 ```
 
-### 更新
+#### 更新
 ```bash
 $curl http://localhost:3000/content/:id -X PUT -d "title=updateTitle&body=updateBody"
 ```
@@ -76,6 +60,29 @@ $curl http://localhost:3000/content/:id -X DELETE
 $curl http://localhost:3000/content-tree -X GET
 ```
 
-## License
 
-Nest is [MIT licensed](LICENSE).
+## Test
+
+```bash
+# unit tests
+$ yarn test
+
+# e2e tests
+$ yarn test:e2e
+
+# test coverage
+$ yarn test:cov
+```
+
+## migration
+
+### migration:generate
+```bash
+$ yarn migration:generate -n createTables
+```
+
+
+### migration:run
+```bash
+$ yarn migration:run
+```
