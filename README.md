@@ -51,7 +51,7 @@ $curl http://localhost:3000/content/:id -X DELETE
 $curl http://localhost:3000/content-tree -X GET
 ```
 
-### DBを初期状態に戻す
+## DBを初期状態に戻す
 ```bash
 $ cp ./data/bk-dev.sqlite ./data/dev.sqlite
 ```
