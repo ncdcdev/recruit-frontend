@@ -1,3 +1,4 @@
+import { ApiBody, ApiOperation } from '@nestjs/swagger';
 import {
   Controller,
   Get,
@@ -16,19 +17,27 @@ export class ContentController {
   constructor(private readonly service: ContentService) {}
 
   @Get()
+  @ApiOperation({ summary: '全てのコンテンツ一覧の取得' })
   async getAllContentList(): Promise<Content[]> {
     return await this.service.find();
   }
 
   @Get(':id')
+  @ApiOperation({ summary: 'コンテンツの取得' })
   async getContent(@Param('id') id: number): Promise<Content> {
     return await this.service.findOne(id);
   }
+
   @Post()
+  @ApiOperation({ summary: 'コンテンツの作成' })
+  @ApiBody({ type: [CreateContentDTO] })
   async addContent(@Body() content: CreateContentDTO) {
     return await this.service.create(content);
   }
+
   @Put(':id')
+  @ApiOperation({ summary: 'コンテンツの更新' })
+  @ApiBody({ type: [UpdateContentDTO] })
   async updateContent(
     @Param('id') id: number,
     @Body() content: UpdateContentDTO,
@@ -36,6 +45,7 @@ export class ContentController {
     return await this.service.update(id, content);
   }
   @Delete(':id')
+  @ApiOperation({ summary: 'コンテンツの削除' })
   async deleteContent(@Param('id') id: number) {
     return await this.service.delete(id);
   }

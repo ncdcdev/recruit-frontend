@@ -1,3 +1,4 @@
+import { ApiOperation } from '@nestjs/swagger';
 import { Controller, Get } from '@nestjs/common';
 import { ContentTreeService } from './content-tree.service';
 
@@ -5,6 +6,10 @@ import { ContentTreeService } from './content-tree.service';
 export class ContentTreeController {
   constructor(private readonly service: ContentTreeService) {}
   @Get()
+  @ApiOperation({
+    summary: 'コンテンツツリーの取得',
+    description: '閉包テーブルっぽく返す',
+  })
   async getAllContentTreeList() {
     return await this.service.find();
   }
