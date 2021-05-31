@@ -1,7 +1,7 @@
 ## Description
 NCDCフロント課題[Markdown Editor]のバックエンドリポジトリ
 
-## Installation
+## Installation & exec
 
 ```bash
 # install
@@ -12,22 +12,10 @@ $ yarn build
 $ yarn start
 ```
 
-## Running the app
-
-```bash
-# development
-$ yarn start
-
-# watch mode
-$ yarn start:dev
-
-# production mode
-$ yarn start:prod
-```
-
-
 ## API
-アプリを起動後、`localhost:3000/api` でも確認できる
+APIのDocumentは、  
+アプリを起動後、`http://localhost:3000/api` にてSwaggerで確認できる。  
+![](./doc/images/swagger.png)
 
 ### Content
 
@@ -66,6 +54,20 @@ $curl http://localhost:3000/content-tree -X GET
 ### DBを初期状態に戻す
 ```bash
 $ cp ./data/bk-dev.sqlite ./data/dev.sqlite
+```
+
+
+## Running the app
+
+```bash
+# development
+$ yarn start
+
+# watch mode
+$ yarn start:dev
+
+# production mode
+$ yarn start:prod
 ```
 
 ## Test
