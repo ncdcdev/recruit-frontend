@@ -17,7 +17,7 @@ export class ContentController {
   constructor(private readonly service: ContentService) {}
 
   @Get()
-  @ApiOperation({ summary: '全てのコンテンツ一覧の取得' })
+  @ApiOperation({ summary: 'コンテンツ一覧の取得' })
   async getAllContentList(): Promise<Content[]> {
     return await this.service.find();
   }
