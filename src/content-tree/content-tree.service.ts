@@ -3,6 +3,16 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ContentTree } from '../entities/content-tree.entity';
 
+export type FindContentTree = {
+  id: number;
+  childTitle?: string;
+  childId?: number;
+  childOrder: number;
+  parentTitle?: string;
+  parentId?: number;
+  parentOrder: number;
+};
+
 @Injectable()
 export class ContentTreeService {
   constructor(
@@ -10,7 +20,7 @@ export class ContentTreeService {
     private readonly contentTreeRepository: Repository<ContentTree>,
   ) {}
 
-  find = async () => {
+  find = async (): Promise<FindContentTree[]> => {
     const contentTreese = await this.contentTreeRepository.find({
       relations: ['parentContent', 'chiledContent'],
     });
@@ -19,8 +29,10 @@ export class ContentTreeService {
         id: contentTree.id,
         childTitle: contentTree.chiledContent?.title,
         childId: contentTree.chiledContent?.id,
+        childOrder: contentTree.chiledContent?.order,
         parentTitle: contentTree.parentContent?.title,
         parentId: contentTree.parentContent?.id,
+        parentOrder: contentTree.parentContent?.order,
       };
     });
   };

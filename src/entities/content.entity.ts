@@ -12,10 +12,10 @@ export class Content {
   readonly id: number;
 
   @Column('varchar', { length: 100, nullable: true })
-  title: string;
+  title?: string;
 
   @Column('varchar', { length: 2000, nullable: true })
-  body: string;
+  body?: string;
 
   @Column()
   order: number;

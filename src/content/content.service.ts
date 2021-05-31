@@ -24,8 +24,8 @@ export class ContentService {
 
     const order = maxOrder.length === 0 ? 1 : maxOrder[0].order + 1;
     const createContent = this.contentRepository.create({
-      title: title ?? '',
-      body: body ?? '',
+      title: title,
+      body: body,
       order: order,
     });
     const chiledContent = await this.contentRepository.save(createContent);

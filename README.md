@@ -4,9 +4,10 @@ NCDCフロント課題[Markdown Editor]のバックエンドリポジトリ
 ## Installation
 
 ```bash
+# install
 $ yarn install
-# migrate実行
-$ yarn migrate
+# build 実行
+$ yarn build
 # 実行
 $ yarn start
 ```
@@ -60,6 +61,10 @@ $curl http://localhost:3000/content/:id -X DELETE
 $curl http://localhost:3000/content-tree -X GET
 ```
 
+### DBを初期状態に戻す
+```bash
+$ cp ./data/bk-dev.sqlite ./data/dev.sqlite
+```
 
 ## Test
 

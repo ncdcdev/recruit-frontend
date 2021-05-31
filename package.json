@@ -20,8 +20,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "//": "use -n option. it defines migration file name. example: yarn migration -n createTables",
-    "migration:generate": "ts-node ./node_modules/.bin/typeorm migration:generate -f ormconfig.ts",
-    "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run -f ormconfig.ts"
+    "migration:generate": "typeorm migration:generate -f ormconfig.ts",
+    "migration:run": "typeorm migration:run -f ormconfig.ts"
   },
   "dependencies": {
     "@nestjs/common": "^7.6.15",

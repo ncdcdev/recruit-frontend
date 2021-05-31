@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, IsOptional } from 'class-validator';
+import { IsNumber, IsString, IsOptional } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateContentDTO {
@@ -6,13 +6,13 @@ export class CreateContentDTO {
   @IsNumber()
   parentId: number;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  title: string;
+  title?: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
-  body: string;
+  body?: string;
 }
 
 export class UpdateContentDTO {

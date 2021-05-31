@@ -1,13 +1,11 @@
-const config = {
+module.exports = {
   type: 'sqlite',
   database: 'data/dev.sqlite',
-  entities: ['src/entities/**/*.entity.ts'],
-  migrations: ['src/migrations/**/*.ts'],
+  entities: ['dist/src/entities/**/*.entity.js'],
+  migrations: ['dist/src/migrations/**/*.js'],
   logging: true,
   cli: {
     entitiesDir: 'src/entities',
     migrationsDir: 'src/migrations',
   },
 };
-
-export default config;
