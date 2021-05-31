@@ -27,9 +27,11 @@ $ yarn start:prod
 
 
 ## API
+アプリを起動後、`localhost:3000/api` でも確認できる
+
 ### Content
 
-#### 一覧取得（廃止予定）
+#### 一覧取得
 ```bash
 $curl http://localhost:3000/content -X GET
 ```
