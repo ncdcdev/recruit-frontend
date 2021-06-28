@@ -30,14 +30,14 @@ export class ContentController {
 
   @Post()
   @ApiOperation({ summary: 'コンテンツの作成' })
-  @ApiBody({ type: [CreateContentDTO] })
+  @ApiBody({ type: CreateContentDTO })
   async addContent(@Body() content: CreateContentDTO) {
     return await this.service.create(content);
   }
 
   @Put(':id')
   @ApiOperation({ summary: 'コンテンツの更新' })
-  @ApiBody({ type: [UpdateContentDTO] })
+  @ApiBody({ type: UpdateContentDTO })
   async updateContent(
     @Param('id') id: number,
     @Body() content: UpdateContentDTO,
