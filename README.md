@@ -51,6 +51,10 @@ $curl http://localhost:3000/content/:id -X DELETE
 $curl http://localhost:3000/content-tree -X GET
 ```
 
+### 仕様書
+https://docs.google.com/presentation/d/1y6L_mnQIi6zr2qD86M7huFvJN9vl56g10l7YHlu5Kg0/edit#slide=id.ge31ec54b6d_0_10
+コンテンツのTree構造の構築をフロントエンド側で実装していただくため、このようなAPIにしている。
+
 ## DBを初期状態に戻す
 ```bash
 $ cp ./data/bk-dev.sqlite ./data/dev.sqlite
