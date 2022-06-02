@@ -19,7 +19,7 @@ export class ContentController {
   @Get()
   @ApiOperation({ summary: 'コンテンツ一覧の取得' })
   async getAllContentList(): Promise<Content[]> {
-    return await this.service.find();
+    return await this.service.findAll();
   }
 
   @Get(':id')
@@ -47,6 +47,7 @@ export class ContentController {
   @Delete(':id')
   @ApiOperation({ summary: 'コンテンツの削除' })
   async deleteContent(@Param('id') id: number) {
+    console.log(id);
     return await this.service.delete(id);
   }
 }
