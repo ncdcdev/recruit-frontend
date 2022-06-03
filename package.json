@@ -5,6 +5,9 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "npm": "yarnを使ってください。"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
