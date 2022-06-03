@@ -17,9 +17,6 @@ export class Content {
   @Column('varchar', { length: 2000, nullable: true })
   body?: string;
 
-  @Column()
-  order: number;
-
   @CreateDateColumn()
   readonly createdAt?: Date;
 

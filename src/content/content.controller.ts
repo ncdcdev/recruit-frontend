@@ -19,7 +19,7 @@ export class ContentController {
   @Get()
   @ApiOperation({ summary: 'コンテンツ一覧の取得' })
   async getAllContentList(): Promise<Content[]> {
-    return await this.service.find();
+    return await this.service.findAll();
   }
 
   @Get(':id')

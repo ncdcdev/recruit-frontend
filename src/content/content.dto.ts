@@ -1,13 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsString, IsOptional } from 'class-validator';
-import { Type } from 'class-transformer';
+import { IsString, IsOptional } from 'class-validator';
 
 export class CreateContentDTO {
-  @ApiProperty({ description: '紐づく親コンテンツID', example: 1 })
-  @Type(() => Number)
-  @IsNumber()
-  parentId: number;
-
   @ApiProperty({ description: 'コンテンツのタイトル', example: 'Hello Title' })
   @IsOptional()
   @IsString()
