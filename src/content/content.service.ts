@@ -27,7 +27,6 @@ export class ContentService {
   };
   delete = async (id: number) => {
     const deleteContent = await this.contentRepository.findOne(id);
-    console.log(deleteContent);
     await this.contentRepository.remove(deleteContent);
   };
 

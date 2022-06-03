@@ -47,7 +47,6 @@ export class ContentController {
   @Delete(':id')
   @ApiOperation({ summary: 'コンテンツの削除' })
   async deleteContent(@Param('id') id: number) {
-    console.log(id);
     return await this.service.delete(id);
   }
 }
