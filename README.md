@@ -1,7 +1,7 @@
 ## Description
 
 NCDC フロント課題[Markdown Editor]のバックエンドリポジトリ
-![](./doc/images/overview.gif)
+![](./doc/images/overview.mov)
 
 ## Installation & exec
 
