@@ -7,6 +7,8 @@ import {
   Body,
   Param,
   Put,
+  HttpCode,
+  BadRequestException,
 } from '@nestjs/common';
 import { ContentService } from './content.service';
 import { CreateContentDTO, UpdateContentDTO } from './content.dto';
@@ -25,7 +27,9 @@ export class ContentController {
   @Get(':id')
   @ApiOperation({ summary: 'コンテンツの取得' })
   async getContent(@Param('id') id: number): Promise<Content> {
-    return await this.service.findOne(id);
+    const res = await this.service.findOne(id);
+    if (res === undefined) throw new BadRequestException();
+    return res;
   }
 
   @Post()
@@ -42,11 +46,17 @@ export class ContentController {
     @Param('id') id: number,
     @Body() content: UpdateContentDTO,
   ) {
-    return await this.service.update(id, content);
+    const res = await this.service.update(id, content);
+    if (res === undefined) throw new BadRequestException();
+    return res;
   }
+
   @Delete(':id')
+  @HttpCode(204)
   @ApiOperation({ summary: 'コンテンツの削除' })
   async deleteContent(@Param('id') id: number) {
-    return await this.service.delete(id);
+    const res = await this.service.delete(id);
+    if (res == null) throw new BadRequestException();
+    return res;
   }
 }

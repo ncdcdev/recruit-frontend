@@ -22,11 +22,14 @@ export class ContentService {
   };
 
   update = async (id, contentDto: UpdateContentDTO) => {
+    const content = await this.contentRepository.findOne(id);
+    if (content === undefined) return undefined;
     await this.contentRepository.update({ id }, { ...contentDto });
     return await this.contentRepository.findOne(id);
   };
   delete = async (id: number) => {
     const deleteContent = await this.contentRepository.findOne(id);
+    if (deleteContent === undefined) return undefined;
     await this.contentRepository.remove(deleteContent);
   };
 
