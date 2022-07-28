@@ -1,4 +1,4 @@
-import { ApiBody, ApiOperation } from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import {
   Controller,
   Get,
@@ -14,6 +14,7 @@ import { ContentService } from './content.service';
 import { CreateContentDTO, UpdateContentDTO } from './content.dto';
 import { Content } from '../entities/content.entity';
 
+@ApiTags('Content')
 @Controller('content')
 export class ContentController {
   constructor(private readonly service: ContentService) {}
