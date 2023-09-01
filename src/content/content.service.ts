@@ -30,7 +30,7 @@ export class ContentService {
   delete = async (id: number) => {
     const deleteContent = await this.contentRepository.findOne(id);
     if (deleteContent === undefined) return undefined;
-    await this.contentRepository.remove(deleteContent);
+    return await this.contentRepository.remove(deleteContent);
   };
 
   findAll = async () => {
