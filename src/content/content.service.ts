@@ -21,14 +21,14 @@ export class ContentService {
     return childContent;
   };
 
-  update = async (id, contentDto: UpdateContentDTO) => {
-    const content = await this.contentRepository.findOne(id);
+  update = async (id: number, contentDto: UpdateContentDTO) => {
+    const content = await this.contentRepository.findOneBy({ id });
     if (content === undefined) return undefined;
     await this.contentRepository.update({ id }, { ...contentDto });
-    return await this.contentRepository.findOne(id);
+    return await this.contentRepository.findOneBy({ id });
   };
   delete = async (id: number) => {
-    const deleteContent = await this.contentRepository.findOne(id);
+    const deleteContent = await this.contentRepository.findOneBy({ id });
     if (deleteContent === undefined) return undefined;
     return await this.contentRepository.remove(deleteContent);
   };
@@ -38,6 +38,6 @@ export class ContentService {
   };
 
   findOne = async (id: number) => {
-    return await this.contentRepository.findOne(id);
+    return await this.contentRepository.findOneBy({ id });
   };
 }
