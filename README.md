@@ -7,13 +7,13 @@ NCDC フロント課題[Markdown Editor]のバックエンドリポジトリ
 
 ```bash
 # install
-$ yarn install
+$ npm install
 # migration
-$ yarn migration:run
+$ npm run migration:run
 # start build
-$ yarn build
+$ npm run build
 # 実行
-$ yarn start
+$ npm run start
 ```
 
 ## API
